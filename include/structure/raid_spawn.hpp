@@ -1,28 +1,40 @@
 #pragma once
 
 #include "global.hpp"
+#include "rng/raid.hpp"
 
 namespace structure {
     class RaidSpawn {
        public:
-        RaidSpawn(u8* data, u8 id);
+        enum RaidType : u8 { EMPTY = 0, COMMON = 1, RARE = 2, WISHING_COMMON = 3, WISHING_RARE = 4, EVENT_COMMON = 5 };
+
+        struct Data {
+            u64 hash;
+            u64 seed;
+            u8 starCount;
+            u8 roll;
+            RaidType type;
+            u8 flags;
+            u32 unk;
+        } data;
+
+        RaidSpawn(Data raidSpawnData);
         ~RaidSpawn();
-        u8 ID;
-        u64 Seed;
-        u8 Stars;
 
-        bool isActive();
-        bool isRare();
-        bool isWishingPiece();
-        bool isEvent();
+        inline bool isActive() { return data.type != RaidType::EMPTY; }
+        inline bool isRare() { return data.type == RaidType::RARE || data.type == RaidType::WISHING_RARE; }
+        inline bool isWishingPiece() {
+            return data.type == RaidType::WISHING_COMMON || data.type == RaidType::WISHING_RARE;
+        }
+        inline bool isEvent() { return data.flags & (1 << 1); }
+        inline u32 getNextShinyFrameNum() { return rng::getRaidShinyFrame(data.seed); }
 
-        u32 ShinyFrame();
-        u16 Species;
-        u8 FlawlessIV;
+        // TODO:
+        // void FindSpawn(u64 hash, u8 randroll);
 
-       private:
-        u8 DenType;
-        u8 Flags;
-        void FindSpawn(u64 hash, u8 randroll);
+        // TODO: refactor these somewhere else going forward
+        // u8 ID;
+        // u16 Species;
+        // u8 FlawlessIV;
     };
 }  // namespace structure
