@@ -1,11 +1,8 @@
-#ifndef RAID_HPP
-#define RAID_HPP
+#pragma once
 
-#include "Frame.hpp"
+#include "structure/frame.hpp"
 
-namespace RNG {
-  Frame Raid(u64 seed, u8 FlawlessIV, u8 AbilityFlag, bool isRandomGender);
-  u32 getRaidShinyFrame(u64 seed);
-}  // namespace RNG
-
-#endif  // RAID_HPP
+namespace rng {
+    Frame raid(u64 seed, u8 FlawlessIV, u8 AbilityFlag, bool isRandomGender);
+    u32 getRaidShinyFrame(u64 seed);
+}  // namespace rng
