@@ -18,7 +18,7 @@ namespace structure {
             u32 unk;
         } data;
 
-        RaidSpawn(Data raidSpawnData);
+        RaidSpawn(Data& raidSpawnData);
         ~RaidSpawn();
 
         inline bool isActive() { return data.type != RaidType::EMPTY; }
@@ -37,4 +37,20 @@ namespace structure {
         // u16 Species;
         // u8 FlawlessIV;
     };
+
+    class RaidSpawnList {
+       public:
+        static constexpr u32 LIST_SIZE = 111;
+        static constexpr u32 DATA_SIZE = sizeof(RaidSpawn) * LIST_SIZE;
+
+        RaidSpawnList(u8 raidSpawnListData[DATA_SIZE]);
+        ~RaidSpawnList();
+
+        inline RaidSpawn* getDens() { return (RaidSpawn*)m_data; }
+        RaidSpawn* getWishingPieceDen(int& denNum);
+
+       private:
+        u8 m_data[DATA_SIZE];
+    };
+
 }  // namespace structure
