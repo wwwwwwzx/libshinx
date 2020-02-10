@@ -1,6 +1,8 @@
 #pragma once
 
-#include "global.hpp"
+#include "shinx/global.hpp"
+
+namespace shinx {
 
 namespace structure {
     class PK8 {
@@ -48,3 +50,5 @@ namespace structure {
         u32 IV32();
     };
 }  // namespace structure
+
+}  // namespace shinx

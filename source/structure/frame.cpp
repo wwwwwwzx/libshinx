@@ -1,6 +1,8 @@
-#include "structure/Frame.hpp"
+#include "shinx/structure/frame.hpp"
 
 #include <sstream>
+
+namespace shinx {
 
 std::string Frame::toString() {
     // dump raw info
@@ -10,3 +12,5 @@ std::string Frame::toString() {
     ss << " " << +Nature << " " << +Ability << " " << +Gender;
     return ss.str();
 };
+
+}  // namespace shinx

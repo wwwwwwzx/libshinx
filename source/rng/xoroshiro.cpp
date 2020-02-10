@@ -1,12 +1,11 @@
-#include "rng/xoroshiro.hpp"
+#include "shinx/rng/xoroshiro.hpp"
 
-static inline u64 rotl(u64 x, u8 k) {
-    return (x << k) | (x >> (64 - k));
-}
+namespace shinx {
 
 namespace rng {
     xoroshiro::xoroshiro(u64 seed) : state{seed, 0x82A2B175229D6A5B} {}
 
+    static inline u64 rotl(u64 x, u8 k) { return (x << k) | (x >> (64 - k)); }
     u64 xoroshiro::nextulong() {
         const u64 s0 = state[0];
         u64 s1 = state[1];
@@ -36,3 +35,5 @@ namespace rng {
         state[1] = 0x82A2B175229D6A5B;
     }
 }  // namespace rng
+
+}  // namespace shinx

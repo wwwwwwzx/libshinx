@@ -1,6 +1,8 @@
-#include "structure/raid_spawn.hpp"
+#include "shinx/structure/raid_spawn.hpp"
 
 // https://github.com/kwsch/PKHeX/blob/master/PKHeX.Core/Saves/Substructures/Gen8/RaidSpawnList8.cs
+
+namespace shinx {
 
 namespace structure {
 
@@ -18,15 +20,17 @@ namespace structure {
 
     RaidSpawnList::~RaidSpawnList() {}
 
-    RaidSpawn* RaidSpawnList::getWishingPieceDen(int& denNum) {
-        for (denNum = 0; denNum < (int)LIST_SIZE; denNum++) {
-            RaidSpawn* curDen = &getDens()[denNum];
+    RaidSpawn* RaidSpawnList::getWishingPieceDen(int& out_denNum) {
+        for (out_denNum = 0; out_denNum < (int)LIST_SIZE; out_denNum++) {
+            RaidSpawn* curDen = &getDens()[out_denNum];
             if (curDen->isWishingPiece()) {
                 return curDen;
             }
         }
-        denNum = -1;
+        out_denNum = -1;
         return nullptr;
     }
 
 }  // namespace structure
+
+}  // namespace shinx

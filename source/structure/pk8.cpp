@@ -1,4 +1,6 @@
-#include "structure/pk8.hpp"
+#include "shinx/structure/pk8.hpp"
+
+namespace shinx {
 
 namespace structure {
     // https://github.com/kwsch/PKHeX/blob/master/PKHeX.Core/PKM/PK8.cs
@@ -20,7 +22,7 @@ namespace structure {
     u16 PK8::TID() { return *(u16*)(data + 0xC); }
     u16 PK8::SID() { return *(u16*)(data + 0xE); }
     u32 PK8::PID() { return *(u32*)(data + 0x1C); }
-    u8 PK8::ShinyType() { return Util::getShinyType(*(u32*)(data + 0xC), PID()); }
+    u8 PK8::ShinyType() { return util::getShinyType(*(u32*)(data + 0xC), PID()); }
 
     u32 PK8::IV32() { return *(u32*)(data + 0x8C); }
     bool PK8::isEgg() { return ((IV32() >> 30) & 1) == 1; }
@@ -108,3 +110,5 @@ namespace structure {
         }
     }
 }  // namespace structure
+
+}  // namespace shinx

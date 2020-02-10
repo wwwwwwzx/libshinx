@@ -1,7 +1,9 @@
 #pragma once
 
 #include <string>
-#include "global.hpp"
+#include "shinx/global.hpp"
+
+namespace shinx {
 
 class Frame {
    public:
@@ -11,3 +13,5 @@ class Frame {
     u8 ShinyType, Gender, Ability, Nature;
     std::string toString();  // For debug
 };
+
+}  // namespace shinx

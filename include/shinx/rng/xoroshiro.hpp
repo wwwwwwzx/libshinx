@@ -1,6 +1,8 @@
 #pragma once
 
-#include "global.hpp"
+#include "shinx/global.hpp"
+
+namespace shinx {
 
 namespace rng {
     class xoroshiro {
@@ -16,3 +18,5 @@ namespace rng {
         u64 state[2];
     };
 }  // namespace rng
+
+}  // namespace shinx

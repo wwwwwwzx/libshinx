@@ -1,5 +1,7 @@
-#include "rng/Raid.hpp"
-#include "rng/xoroshiro.hpp"
+#include "shinx/rng/raid.hpp"
+#include "shinx/rng/xoroshiro.hpp"
+
+namespace shinx {
 
 namespace rng {
     Frame Raid(u64 seed, u8 FlawlessIV, u8 AbilityFlag, bool isRandomGender) {
@@ -13,7 +15,7 @@ namespace rng {
         // PID and Shininess
         u32 OT = rng.nextuint();
         result.PID = rng.nextuint();
-        result.ShinyType = Util::getShinyType(OT, result.PID);
+        result.ShinyType = util::getShinyType(OT, result.PID);
 
         // IVs
         for (u8 i = 0; i < FlawlessIV;) {
@@ -52,7 +54,7 @@ namespace rng {
             seed = rng.nextulong();  // Also advance for EC
             u32 TID = rng.nextuint();
             u32 PID = rng.nextuint();
-            if (Util::getShinyType(TID, PID) > 0)
+            if (util::getShinyType(TID, PID) > 0)
                 return ShinyFrame;
             else
                 ShinyFrame++;
@@ -60,3 +62,5 @@ namespace rng {
         return ShinyFrame;
     }
 }  // namespace rng
+
+}  // namespace shinx

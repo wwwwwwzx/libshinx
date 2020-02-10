@@ -1,7 +1,9 @@
 #pragma once
 
-#include "global.hpp"
-#include "rng/raid.hpp"
+#include "shinx/global.hpp"
+#include "shinx/rng/raid.hpp"
+
+namespace shinx {
 
 namespace structure {
     class RaidSpawn {
@@ -47,10 +49,12 @@ namespace structure {
         ~RaidSpawnList();
 
         inline RaidSpawn* getDens() { return (RaidSpawn*)m_data; }
-        RaidSpawn* getWishingPieceDen(int& denNum);
+        RaidSpawn* getWishingPieceDen(int& out_denNum);
 
        private:
         u8 m_data[DATA_SIZE];
     };
 
 }  // namespace structure
+
+}  // namespace shinx
