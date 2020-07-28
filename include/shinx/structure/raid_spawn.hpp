@@ -1,7 +1,7 @@
 #pragma once
 
-#include "shinx/global.hpp"
-#include "shinx/rng/raid.hpp"
+#include "../global.hpp"
+#include "../rng/raid.hpp"
 
 namespace shinx {
 

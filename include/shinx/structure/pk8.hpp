@@ -1,6 +1,6 @@
 #pragma once
 
-#include "shinx/global.hpp"
+#include "../global.hpp"
 
 namespace shinx {
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "shinx/structure/frame.hpp"
+#include "../structure/frame.hpp"
 
 namespace shinx {
 
